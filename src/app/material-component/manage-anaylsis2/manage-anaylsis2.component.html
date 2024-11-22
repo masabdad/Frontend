@@ -1,0 +1,44 @@
+<mat-card>
+<b><span>Total Revenue This Month:</span></b>
+<span>{{ totalRevenue | currency:'PKR:  ':'symbol':'1.2-2' }}</span>
+</mat-card>
+<hr>
+<mat-card>
+  <b><span>Highest Sold Product:</span></b>
+  <span>{{ highestSoldProduct ? highestSoldProduct.name : 'N/A' }}</span>
+</mat-card>
+<hr>
+<div>
+    <b><span>Current Date and Time:</span></b>
+    <span>{{ currentDateAndTime }}</span>
+  </div>
+<hr>
+<div class="responsive_table">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      <!-- Define columns for the product details -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Name</th>
+        <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef> Email</th>
+        <td mat-cell *matCellDef="let element">{{ element.email }}</td>
+      </ng-container>
+  
+  
+      <ng-container matColumnDef="total">
+        <th mat-header-cell *matHeaderCellDef>Purchasing</th>
+        <td mat-cell *matCellDef="let element">{{ element.total | currency:'PKR:  ':'symbol':'1.2-2' }}</td>
+      </ng-container>
+  
+      <!-- Header row with column headers -->
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  
+      <!-- Data rows with product details -->
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+  <hr>
+
+  

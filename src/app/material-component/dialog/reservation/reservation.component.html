@@ -1,0 +1,112 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row fxLayout="row">
+        <span>{{dialogData.action}} Reservation</span>
+        <span class="spacer"></span>
+        <button class="mat-dialog-class" mat-icon-button mat-dialog-close>
+            <mat-icon>close</mat-icon>
+        </button>
+
+    </mat-toolbar-row>
+
+</mat-toolbar>
+
+
+
+<mat-dialog-content class="mat-typography">
+    <form [formGroup]="reservationForm">
+        <div fxFlex fxLayout="column">
+
+            <div fxLayout="row wrap">
+                <mat-form-field appearance="standard" fxFlex>
+                    <mat-label>Date</mat-label>
+                    <input matInput formControlName="date" required>
+                    <mat-error *ngIf="reservationForm.controls.date.touched && reservationForm.controls.date.invalid">
+                        <span *ngIf="reservationForm.controls.date.errors.required">This Field Is Mandatory</span>
+                        <span *ngIf="reservationForm.controls.date.errors.pattern">This Field Is Inavalid</span>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+
+            <div fxLayout="row wrap">
+                <mat-form-field appearance="standard" fxFlex>
+                    <mat-label>Time </mat-label>
+                    <input matInput formControlName="time" required>
+                    <mat-error *ngIf="reservationForm.controls.time.touched && reservationForm.controls.time.invalid">
+                        <span *ngIf="reservationForm.controls.time.errors.required">This Field Is
+                            Mandatory</span>
+                        <span *ngIf="reservationForm.controls.time.errors.pattern">This Field Is
+                            Inavalid</span>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+
+
+            <div fxLayout="row wrap">
+                <mat-form-field appearance="standard" fxFlex>
+                    <mat-label>Table Number </mat-label>
+                    <input matInput formControlName="tableNumber" required>
+                    <mat-error
+                        *ngIf="reservationForm.controls.tableNumber.touched && reservationForm.controls.tableNumber.invalid">
+                        <span *ngIf="reservationForm.controls.tableNumber.errors.required">This Field Is
+                            Mandatory</span>
+                        <span *ngIf="reservationForm.controls.tableNumber.errors.pattern">This Field Is
+                            Inavalid</span>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+
+            <div fxLayout="row wrap">
+                <mat-form-field appearance="standard" fxFlex>
+                    <mat-label>Number Of Guests </mat-label>
+                    <input matInput formControlName="numberOfGuests" required>
+                    <mat-error
+                        *ngIf="reservationForm.controls.numberOfGuests.touched && reservationForm.controls.numberOfGuests.invalid">
+                        <span *ngIf="reservationForm.controls.numberOfGuests.errors.required">This Field Is
+                            Mandatory</span>
+                        <span *ngIf="reservationForm.controls.numberOfGuests.errors.pattern">This Field Is
+                            Inavalid</span>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+
+            <div fxLayout="row wrap">
+                <mat-form-field appearance="standard" fxFlex>
+                    <mat-label>Customer Name</mat-label>
+                    <input matInput formControlName="customerName" required>
+                    <mat-error
+                        *ngIf="reservationForm.controls.customerName.touched && reservationForm.controls.customerName.invalid">
+                        <span *ngIf="reservationForm.controls.customerName.errors.required">This Field Is
+                            Mandatory</span>
+                        <span *ngIf="reservationForm.controls.customerName.errors.pattern">This Field Is Inavalid</span>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+
+
+            <div fxLayout="row wrap">
+                <mat-form-field appearance="standard" fxFlex>
+                    <mat-label>Customer Contact</mat-label>
+                    <input matInput formControlName="customerContact" required>
+                    <mat-error
+                        *ngIf="reservationForm.controls.customerContact.touched && reservationForm.controls.customerContact.invalid">
+                        <span *ngIf="reservationForm.controls.customerContact.errors.required">This Field Is
+                            Mandatory</span>
+                        <span *ngIf="reservationForm.controls.customerContact.errors.pattern">This Field Is
+                            Inavalid</span>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+    </form>
+</mat-dialog-content>
+
+
+
+        <mat-dialog-actions align="end">
+            <button mat-raised-button color="primary" type="submit" (click)="handleSubmit()"
+                [disabled]="!(reservationForm.valid && reservationForm.dirty)">
+                <mat-icon>save</mat-icon> {{action}}
+
+            </button>
+            <button mat-raised-button color="warn" mat-dialog-close><mat-icon>cancel</mat-icon>Close</button>
+        </mat-dialog-actions>

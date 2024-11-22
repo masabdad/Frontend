@@ -1,0 +1,17 @@
+<h2>Enter Verification Code</h2>
+<b><i><span> Code Is Sent To The Eamil Provided During Signup.</span></i></b>
+<hr>
+<b><i><span>Provide Same Email Which You Provided During Signup.</span></i></b>
+<hr>
+<hr>
+<form (ngSubmit)="verifyVerificationCode()">
+  <mat-form-field>
+    <input matInput placeholder="Email" [(ngModel)]="email" name="email" required>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Verification Code" [(ngModel)]="verificationCode" name="verificationCode" required>
+  </mat-form-field>
+  <button type="submit" mat-raised-button color="primary" (click)="verifyVerificationCode()">Verify Code</button>
+</form>
+<div *ngIf="errorMessage" class="error-message"><b>Incorrect Email Or Verification Code.</b></div>
+<div *ngIf="successMessage" class="success-message"><b>Email Verified Successfully.</b></div>

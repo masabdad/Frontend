@@ -1,0 +1,81 @@
+<mat-card>
+    <b><i><span>Cannot Create A Reservation On Same Table Using Same Date And Time.
+            <hr>(Create New Reservation After 30 Minutes of previous reservtaion. Or Use Another Table.)
+            <hr>(We Have Only 8 Tables Available Please Don't Exceed The Limit.)
+            <hr>For Further Details:
+            <hr>Call Us On: 0333-3333333
+            <hr>Email Us:example@gmail.com
+        </span></i></b>
+    <button mat-flat-button color="primary" class="float-right" (click)="handleAddAction()"
+        *ngIf="userRole !== 'Employee'">
+        <mat-icon>add_circle</mat-icon>Add Reservation
+    </button>
+</mat-card>
+<hr>
+<mat-card>
+    <mat-form-field appearence="standard">
+        <mat-label>Filter</mat-label>
+        <input matInput (keyup)="applyFilter($event)" #input>
+    </mat-form-field>
+</mat-card>
+<hr>
+<div class="responsive_table">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+        <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef>Reservation ID</th>
+            <td mat-cell *matCellDef="let element">{{element.id}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="customerName">
+            <th mat-header-cell *matHeaderCellDef>Customer Name</th>
+            <td mat-cell *matCellDef="let element">{{element.customerName}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="customerContact">
+            <th mat-header-cell *matHeaderCellDef>Customer Contact</th>
+            <td mat-cell *matCellDef="let element">{{element.customerContact}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="date">
+            <th mat-header-cell *matHeaderCellDef>Date</th>
+            <td mat-cell *matCellDef="let element">{{element.date}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="numberOfGuests">
+            <th mat-header-cell *matHeaderCellDef>Number Of Guests</th>
+            <td mat-cell *matCellDef="let element">{{element.numberOfGuests}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="status">
+            <th mat-header-cell *matHeaderCellDef>Status</th>
+            <td mat-cell *matCellDef="let element">{{element.status}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="tableNumber">
+            <th mat-header-cell *matHeaderCellDef>Table Number</th>
+            <td mat-cell *matCellDef="let element">{{element.tableNumber}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="time">
+            <th mat-header-cell *matHeaderCellDef>Time</th>
+            <td mat-cell *matCellDef="let element">{{element.time}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="edit">
+            <th mat-header-cell *matHeaderCellDef>Action</th>
+            <td mat-cell *matCellDef="let element" class="action-link">
+                <button mat-icon-button color="primary" matTooltip="Delete" (click)="handleDeleteAction(element)" *ngIf="userRole !== 'Employee' && 
+                userRole !== 'user'">
+                    <mat-icon>delete</mat-icon>
+                </button>
+
+
+
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns;stucky:true"></tr>
+        <tr mat-row *matRowDef="let row;columns:displayedColumns;"></tr>
+    </table>
+</div>

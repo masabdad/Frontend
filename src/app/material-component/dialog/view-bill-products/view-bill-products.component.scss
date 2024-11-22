@@ -1,0 +1,63 @@
+.mat-toolbar {
+    margin: -24px;
+    margin-bottom: 0;
+    width: auto;
+    margin-bottom: 10PX;
+  }
+  
+    mat-form-field{
+        padding: 5px;
+    }
+
+    .float-right{
+        float: right;
+    }
+    
+    mat-card{
+        padding: 20px;
+    }
+    
+    table {
+        width: 100%;
+      }
+
+
+      #customers {
+        font-family: Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+      }
+      
+      #customers td, #customers th {
+        border: 1px solid #ddd;
+        padding: 8px;
+      }
+      
+      #customers th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: #04AA6D;
+        color: white;
+      }
+
+      @media print {
+        /* Hide unnecessary elements from the printed bill */
+        body * {
+          display: none;
+        }
+      
+        /* Display only the bill content */
+        .bill-print {
+          display: block;
+        }
+      
+        /* Set margins and font styles for the printed bill */
+        .bill-print {
+          margin: 10px; /* Adjust the margin as needed */
+          font-family: Arial, sans-serif; /* Set the desired font-family */
+          font-size: 12px; /* Set the desired font size */
+          line-height: 1.2;
+        }
+      }
+      
